@@ -1,0 +1,79 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Brella
+providerId: brella
+created: '2026-07-12'
+modified: '2026-07-12'
+reconciled: false
+tags:
+- Events
+- Event Networking
+- Event Platform
+- SaaS
+- FinOps
+- Cost Management
+description: >-
+  FinOps view of Brella spend. Brella is a contact-sales SaaS event platform
+  billed via negotiated event / platform licensing rather than public
+  usage-based API metering. The Integration API and webhooks are included with
+  a paid engagement and are not separately metered or invoiced per call, so
+  there are no public per-token or per-request meters to track. Cost management
+  is contract-oriented: license scope, number of events, and add-ons.
+notes: >-
+  Not reconciled - Brella publishes no public pricing or billing exports. The
+  billing model below reflects the observed contact-sales SaaS structure;
+  confirm invoice granularity and any usage components with Brella on
+  reconciliation.
+sources:
+- https://www.brella.io/
+- https://www.brella.io/what-you-get
+- https://developer.brella.io/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Brella
+serviceCategory: Events and Engagement
+billingModel:
+  pricingCategory: Subscription
+  billingFrequency: Annual
+  billingCurrency: USD
+  chargeCategories:
+  - Purchase
+focusColumns:
+  ServiceName: Brella Event Platform
+  ServiceCategory: Events and Engagement
+  ProviderName: Brella
+  PublisherName: Brella
+  InvoiceIssuerName: Brella
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Subscription
+meters:
+- name: platform_license
+  description: >-
+    Negotiated event / platform license fee. Not usage-metered; the Integration
+    API and webhooks are included with the engagement.
+  unit: contract
+  aggregation: flat
+  dimensions:
+  - organization
+principles:
+- name: Visibility
+  description: >-
+    Track Brella spend at the contract / event level; the API itself is not
+    separately metered, so map cost to events rather than API calls.
+- name: Allocation
+  description: Allocate the platform license to the owning event or business unit.
+- name: Optimization
+  description: >-
+    Right-size the license to the number and scale of events; negotiate add-ons
+    and multi-event terms with Brella sales.
+- name: Accountability
+  description: Assign an owner per event/contract to review renewal scope and cost.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

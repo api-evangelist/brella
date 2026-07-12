@@ -1,0 +1,54 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Brella
+providerId: brella
+created: '2026-07-12'
+modified: '2026-07-12'
+reconciled: true
+tags:
+- Events
+- Event Networking
+- Event Platform
+- SaaS
+- Rate Limiting
+- Pagination
+description: >-
+  Brella's Integration API documents no hard rate limits but reserves the right
+  to block unreasonable request volumes case by case, and recommends no more
+  than 10 requests per second. Pagination is mandatory on every GET endpoint
+  that returns multiple objects (enforced as of January 8, 2025): supply
+  page[size] (records per page, maximum 500) and page[number].
+notes: >-
+  Reconciled against the public developer portal rate-limiting & pagination
+  page. Brella states there are no hard limits "at present"; the 10 req/sec
+  figure is a stated recommendation, not a published hard cap. Re-verify on
+  reconciliation.
+sources:
+- https://developer.brella.io/rate-limiting-and-pagination
+- https://developer.brella.io/
+limits:
+- name: Recommended Request Rate
+  scope: account
+  metric: requests
+  limit: 10 per second (recommended maximum)
+  notes: >-
+    No hard cap published. Brella reserves the right to block unreasonable
+    request volumes on a case-by-case basis.
+- name: Page Size
+  scope: request
+  metric: records
+  limit: 500
+  notes: Maximum records per page via page[size].
+policies:
+- name: Mandatory Pagination
+  description: >-
+    As of January 8, 2025, page[size] and page[number] are required on all GET
+    endpoints returning multiple objects.
+- name: Backoff Strategy
+  description: >-
+    Stay under the recommended 10 requests/second and implement retry with
+    backoff to avoid being blocked for unreasonable volume.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,137 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Brella Integration API",
+    "version": "v4",
+    "description": "Public REST Integration API for the Brella event networking platform. Read event data (events, attendees, speakers, sponsors, timeslots, invites) for a Brella organization. Base URL: https://api.brella.io/api/integration. Authenticate with an organization API key in the Brella-Api-Access-Token header; negotiate the version with Accept: application/vnd.brella.v4+json. Pagination is mandatory on all list endpoints (page[size] up to 500, page[number])."
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "apikey": {
+        "key": "Brella-Api-Access-Token",
+        "value": "{{apiKey}}",
+        "in": "header"
+      }
+    },
+    "headers": [
+      { "name": "Accept", "value": "application/vnd.brella.v4+json" },
+      { "name": "Content-Type", "value": "application/json" }
+    ]
+  },
+  "items": [
+    {
+      "info": { "name": "Events", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List all events", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brella.io/api/integration/organizations/:organizationId/events",
+            "params": [
+              { "name": "organizationId", "value": "", "type": "path", "description": "The numeric ID of the Brella organization." },
+              { "name": "page[size]", "value": "50", "type": "query", "description": "Records per page, max 500. Mandatory." },
+              { "name": "page[number]", "value": "1", "type": "query", "description": "Page number. Mandatory." }
+            ]
+          },
+          "docs": "List the events belonging to a Brella organization. Optional created_from / created_to ISO 8601 filters are supported."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Attendees", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List all attendees", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brella.io/api/integration/organizations/:organizationId/events/:eventId/attendees",
+            "params": [
+              { "name": "organizationId", "value": "", "type": "path", "description": "The numeric ID of the Brella organization." },
+              { "name": "eventId", "value": "", "type": "path", "description": "The numeric ID of the Brella event." },
+              { "name": "page[size]", "value": "50", "type": "query", "description": "Records per page, max 500. Mandatory." },
+              { "name": "page[number]", "value": "1", "type": "query", "description": "Page number. Mandatory." }
+            ]
+          },
+          "docs": "List attendees for a specific event. Supports created_from, created_to, updated_from, updated_to ISO 8601 filters for incremental syncs."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Speakers", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List all speakers", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brella.io/api/integration/organizations/:organizationId/events/:eventId/speakers",
+            "params": [
+              { "name": "organizationId", "value": "", "type": "path" },
+              { "name": "eventId", "value": "", "type": "path" },
+              { "name": "page[size]", "value": "50", "type": "query" },
+              { "name": "page[number]", "value": "1", "type": "query" }
+            ]
+          },
+          "docs": "List the speakers configured for a specific event."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Sponsors", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List all sponsors", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brella.io/api/integration/organizations/:organizationId/events/:eventId/sponsors",
+            "params": [
+              { "name": "organizationId", "value": "", "type": "path" },
+              { "name": "eventId", "value": "", "type": "path" },
+              { "name": "page[size]", "value": "50", "type": "query" },
+              { "name": "page[number]", "value": "1", "type": "query" }
+            ]
+          },
+          "docs": "List sponsors and exhibitors for a specific event."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Schedule", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List all timeslots", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brella.io/api/integration/organizations/:organizationId/events/:eventId/timeslots",
+            "params": [
+              { "name": "organizationId", "value": "", "type": "path" },
+              { "name": "eventId", "value": "", "type": "path" },
+              { "name": "page[size]", "value": "50", "type": "query" },
+              { "name": "page[number]", "value": "1", "type": "query" }
+            ]
+          },
+          "docs": "List all timeslots (networking and content types) for a specific event: titles, subtitles, tracks, locations, tags, and formatted content."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Invites", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List all invites", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brella.io/api/integration/organizations/:organizationId/events/:eventId/invites",
+            "params": [
+              { "name": "organizationId", "value": "", "type": "path" },
+              { "name": "eventId", "value": "", "type": "path" },
+              { "name": "page[size]", "value": "50", "type": "query" },
+              { "name": "page[number]", "value": "1", "type": "query" }
+            ]
+          },
+          "docs": "List the invites issued for a specific event."
+        }
+      ]
+    }
+  ]
+}

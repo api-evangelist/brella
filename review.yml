@@ -1,0 +1,110 @@
+aid: brella
+name: Brella
+review:
+  question: Does Brella expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-12'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Brella's public developer surface is a
+    request/response REST Integration API over HTTPS plus outbound HTTP webhook
+    callbacks. Webhooks are server-to-endpoint HTTP POSTs (fire-and-forget
+    notifications), not a bidirectional or server-push streaming transport, and
+    no WebSocket (ws:// or wss://) or SSE endpoint is documented on Brella's own
+    API. There is no server-push transport on Brella's own API to model.
+findings:
+  summary: |
+    Brella does publish a documented public REST API. Brella is an event
+    networking and engagement platform (matchmaking, one-to-one meetings,
+    attendee engagement) for conferences and hybrid events. Its public
+    Integration API is documented at developer.brella.io with base URL
+    https://api.brella.io/api/integration. Access is gated: an organization
+    admin generates an organization-level API key from the Brella admin panel
+    after the integration feature is enabled on the account. Authentication is
+    the Brella-Api-Access-Token request header; the API version (v4) is
+    negotiated via Accept: application/vnd.brella.v4+json. The API is
+    read-oriented - list events, attendees, speakers, sponsors, timeslots
+    (schedule), and invites - with mandatory pagination (page[size] up to 500,
+    page[number]) and ISO 8601 date-range filters. Brella also documents
+    outbound webhooks. No WebSocket (ws:// or wss://) or SSE endpoint is
+    documented anywhere on Brella's API.
+  accessModel: |
+    Public but gated / self-service-limited. The API is documented openly, but
+    the API key feature is only activated on an organization's account once the
+    paid integration is enabled by Brella, and keys are org-admin-generated. No
+    public sandbox or self-signup for API keys was found.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.brella.io/api/integration
+      documented: true
+      note: Read-oriented Integration API; Brella-Api-Access-Token header, Accept application/vnd.brella.v4+json.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: Outbound HTTP POST callbacks on invite/attendee/speaker/sponsor/ticket_purchase/ticket_type create/update/delete. Server-to-endpoint HTTP, not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in Brella's developer portal as of the review date.
+  endpointsConfirmedRest:
+    - GET https://api.brella.io/api/integration/organizations/{organizationId}/events
+    - GET https://api.brella.io/api/integration/organizations/{organizationId}/events/{eventId}/attendees
+    - GET https://api.brella.io/api/integration/organizations/{organizationId}/events/{eventId}/speakers
+    - GET https://api.brella.io/api/integration/organizations/{organizationId}/events/{eventId}/sponsors
+    - GET https://api.brella.io/api/integration/organizations/{organizationId}/events/{eventId}/timeslots
+    - GET https://api.brella.io/api/integration/organizations/{organizationId}/events/{eventId}/invites
+  endpointsModeledNotConfirmed:
+    - RSVP & session check-in (get/create/delete RSVP) - documented as a section in the developer portal; exact paths not confirmed at authoring time and NOT modeled in the OpenAPI.
+    - Statistics & analytics (meetings, chats, tracking sessions) - documented as a section; exact paths not confirmed and NOT modeled in the OpenAPI.
+  webhookTriggersConfirmed:
+    - invite.created / invite.updated / invite.deleted
+    - attendee.created / attendee.updated / attendee.deleted
+    - speaker.created / speaker.updated / speaker.deleted
+    - sponsor.created / sponsor.updated / sponsor.deleted
+    - ticket_purchase.created / ticket_purchase.updated / ticket_purchase.deleted
+    - ticket_type.created / ticket_type.updated / ticket_type.deleted
+sources:
+  - url: https://developer.brella.io/
+    type: Documentation
+    note: Developer portal landing; lists Events, Invites, Attendees, RSVP & session check-in, Sponsors, Speakers, Schedule, Statistics & analytics, Webhooks sections.
+  - url: https://developer.brella.io/authentication-and-api-keys
+    type: Authentication
+    note: Base URL https://api.brella.io/api/integration; Brella-Api-Access-Token header; Accept application/vnd.brella.v4+json; SSL required.
+  - url: https://developer.brella.io/rate-limiting-and-pagination
+    type: Documentation
+    note: No hard rate limit (recommend <=10 req/sec); mandatory pagination page[size] (max 500) and page[number] since Jan 8 2025.
+  - url: https://developer.brella.io/list-all-events
+    type: APIReference
+    note: GET /organizations/{organizationId}/events with created_from/created_to filters.
+  - url: https://developer.brella.io/list-all-attendees
+    type: APIReference
+    note: GET /organizations/{organizationId}/events/{eventId}/attendees with created/updated_from/to filters.
+  - url: https://developer.brella.io/list-all-speakers
+    type: APIReference
+    note: GET /organizations/{organizationId}/events/{eventId}/speakers.
+  - url: https://developer.brella.io/list-all-sponsors
+    type: APIReference
+    note: GET /organizations/{organizationId}/events/{eventId}/sponsors.
+  - url: https://developer.brella.io/list-all-timeslots
+    type: APIReference
+    note: GET /organizations/{organizationId}/events/{eventId}/timeslots (networking and content types).
+  - url: https://developer.brella.io/list-all-invites
+    type: APIReference
+    note: GET /organizations/{organizationId}/events/{eventId}/invites.
+  - url: https://developer.brella.io/webhook-triggers
+    type: APIReference
+    note: Webhook trigger event types for invite/attendee/speaker/sponsor/ticket_purchase/ticket_type.
+  - url: https://help-organizers.brella.io/en/articles/181542-set-up-api-and-event-ids
+    type: Documentation
+    note: API key generated by org admin from the admin panel; gated behind enabled integration.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    Brella exposes a documented public REST Integration API (modeled in
+    openapi/brella-openapi.yml) plus outbound webhooks. No WebSocket protocol
+    surface exists, so no AsyncAPI document was created - webhooks are one-way
+    HTTP POST callbacks, not a server-push streaming transport on Brella's own
+    API. WebSocket precision answer is false.

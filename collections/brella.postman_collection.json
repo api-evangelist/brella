@@ -1,0 +1,173 @@
+{
+  "info": {
+    "name": "Brella Integration API",
+    "description": "Public REST Integration API for the Brella event networking platform. Read event data (events, attendees, speakers, sponsors, timeslots, invites) for a Brella organization. Base URL: https://api.brella.io/api/integration. Authenticate with an organization API key in the Brella-Api-Access-Token header, and negotiate the API version with Accept: application/vnd.brella.v4+json. Pagination is mandatory on all list endpoints (page[size] up to 500, page[number]). Access is gated: an organization admin generates the API key from the Brella admin panel.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "key", "value": "Brella-Api-Access-Token", "type": "string" },
+      { "key": "value", "value": "{{apiKey}}", "type": "string" },
+      { "key": "in", "value": "header", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.brella.io/api/integration", "type": "string" },
+    { "key": "apiKey", "value": "", "type": "string" },
+    { "key": "organizationId", "value": "", "type": "string" },
+    { "key": "eventId", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Events",
+      "item": [
+        {
+          "name": "List all events",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/vnd.brella.v4+json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/organizations/{{organizationId}}/events?page[size]=50&page[number]=1",
+              "host": ["{{baseUrl}}"],
+              "path": ["organizations", "{{organizationId}}", "events"],
+              "query": [
+                { "key": "page[size]", "value": "50" },
+                { "key": "page[number]", "value": "1" }
+              ]
+            },
+            "description": "List the events belonging to a Brella organization. Pagination is mandatory; optional created_from / created_to ISO 8601 filters are supported."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Attendees",
+      "item": [
+        {
+          "name": "List all attendees",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/vnd.brella.v4+json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/organizations/{{organizationId}}/events/{{eventId}}/attendees?page[size]=50&page[number]=1",
+              "host": ["{{baseUrl}}"],
+              "path": ["organizations", "{{organizationId}}", "events", "{{eventId}}", "attendees"],
+              "query": [
+                { "key": "page[size]", "value": "50" },
+                { "key": "page[number]", "value": "1" }
+              ]
+            },
+            "description": "List attendees for a specific event. Supports created_from, created_to, updated_from, updated_to ISO 8601 filters for incremental syncs."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Speakers",
+      "item": [
+        {
+          "name": "List all speakers",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/vnd.brella.v4+json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/organizations/{{organizationId}}/events/{{eventId}}/speakers?page[size]=50&page[number]=1",
+              "host": ["{{baseUrl}}"],
+              "path": ["organizations", "{{organizationId}}", "events", "{{eventId}}", "speakers"],
+              "query": [
+                { "key": "page[size]", "value": "50" },
+                { "key": "page[number]", "value": "1" }
+              ]
+            },
+            "description": "List the speakers configured for a specific event."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sponsors",
+      "item": [
+        {
+          "name": "List all sponsors",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/vnd.brella.v4+json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/organizations/{{organizationId}}/events/{{eventId}}/sponsors?page[size]=50&page[number]=1",
+              "host": ["{{baseUrl}}"],
+              "path": ["organizations", "{{organizationId}}", "events", "{{eventId}}", "sponsors"],
+              "query": [
+                { "key": "page[size]", "value": "50" },
+                { "key": "page[number]", "value": "1" }
+              ]
+            },
+            "description": "List sponsors and exhibitors for a specific event."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Schedule",
+      "item": [
+        {
+          "name": "List all timeslots",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/vnd.brella.v4+json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/organizations/{{organizationId}}/events/{{eventId}}/timeslots?page[size]=50&page[number]=1",
+              "host": ["{{baseUrl}}"],
+              "path": ["organizations", "{{organizationId}}", "events", "{{eventId}}", "timeslots"],
+              "query": [
+                { "key": "page[size]", "value": "50" },
+                { "key": "page[number]", "value": "1" }
+              ]
+            },
+            "description": "List all timeslots (networking and content types) for a specific event: titles, subtitles, tracks, locations, tags, and formatted content."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Invites",
+      "item": [
+        {
+          "name": "List all invites",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/vnd.brella.v4+json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/organizations/{{organizationId}}/events/{{eventId}}/invites?page[size]=50&page[number]=1",
+              "host": ["{{baseUrl}}"],
+              "path": ["organizations", "{{organizationId}}", "events", "{{eventId}}", "invites"],
+              "query": [
+                { "key": "page[size]", "value": "50" },
+                { "key": "page[number]", "value": "1" }
+              ]
+            },
+            "description": "List the invites issued for a specific event."
+          }
+        }
+      ]
+    }
+  ]
+}
