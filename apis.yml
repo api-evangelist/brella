@@ -175,6 +175,8 @@ apis:
     updated, or deleted. Server-to-endpoint HTTP POST callbacks - not a WebSocket
     or realtime push transport.
 common:
+- type: AgenticAccess
+  url: agentic-access/brella-agentic-access.yml
 - type: DomainSecurity
   url: security/brella-domain-security.yml
 - type: Authentication
