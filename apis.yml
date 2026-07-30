@@ -11,7 +11,20 @@ description: Brella is an event networking and engagement platform for conferenc
   timeslots, invites) and sync it to registration, CRM, and analytics tools. API
   access is gated - an organization admin generates an API key from the Brella admin
   panel after the integration feature is enabled for the account.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/brella.png
 tags:
 - Events
 - Event Networking
@@ -25,137 +38,6 @@ created: '2026-07-12'
 modified: '2026-07-12'
 specificationVersion: '0.19'
 apis:
-- aid: brella:brella-events-api
-  name: Brella Events API
-  tags:
-  - Events
-  - Organizations
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developer.brella.io/list-all-events
-  baseURL: https://api.brella.io/api/integration
-  properties:
-  - url: https://developer.brella.io/
-    type: Documentation
-  - url: https://developer.brella.io/list-all-events
-    type: APIReference
-  - url: openapi/brella-openapi.yml
-    type: OpenAPI
-  - url: collections/brella.postman_collection.json
-    type: PostmanCollection
-  - url: collections/brella.opencollection.json
-    type: OpenCollection
-  description: List the events belonging to a Brella organization, with mandatory
-    pagination and optional ISO 8601 date-range filtering. Scoped under
-    /organizations/{organizationId}/events.
-- aid: brella:brella-attendees-api
-  name: Brella Attendees API
-  tags:
-  - Attendees
-  - Participants
-  - Networking
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developer.brella.io/list-all-attendees
-  baseURL: https://api.brella.io/api/integration
-  properties:
-  - url: https://developer.brella.io/
-    type: Documentation
-  - url: https://developer.brella.io/list-all-attendees
-    type: APIReference
-  - url: openapi/brella-openapi.yml
-    type: OpenAPI
-  - url: collections/brella.postman_collection.json
-    type: PostmanCollection
-  - url: collections/brella.opencollection.json
-    type: OpenCollection
-  description: List attendees for a specific event, with mandatory pagination and
-    optional created_from / created_to / updated_from / updated_to filters for
-    incremental syncs to registration and CRM systems.
-- aid: brella:brella-speakers-api
-  name: Brella Speakers API
-  tags:
-  - Speakers
-  - Agenda
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developer.brella.io/list-all-speakers
-  baseURL: https://api.brella.io/api/integration
-  properties:
-  - url: https://developer.brella.io/
-    type: Documentation
-  - url: https://developer.brella.io/list-all-speakers
-    type: APIReference
-  - url: openapi/brella-openapi.yml
-    type: OpenAPI
-  - url: collections/brella.postman_collection.json
-    type: PostmanCollection
-  - url: collections/brella.opencollection.json
-    type: OpenCollection
-  description: List the speakers configured for a specific event, scoped under
-    /organizations/{organizationId}/events/{eventId}/speakers.
-- aid: brella:brella-sponsors-api
-  name: Brella Sponsors API
-  tags:
-  - Sponsors
-  - Exhibitors
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developer.brella.io/list-all-sponsors
-  baseURL: https://api.brella.io/api/integration
-  properties:
-  - url: https://developer.brella.io/
-    type: Documentation
-  - url: https://developer.brella.io/list-all-sponsors
-    type: APIReference
-  - url: openapi/brella-openapi.yml
-    type: OpenAPI
-  - url: collections/brella.postman_collection.json
-    type: PostmanCollection
-  - url: collections/brella.opencollection.json
-    type: OpenCollection
-  description: List sponsors and exhibitors for a specific event, scoped under
-    /organizations/{organizationId}/events/{eventId}/sponsors.
-- aid: brella:brella-schedule-api
-  name: Brella Schedule API
-  tags:
-  - Schedule
-  - Timeslots
-  - Agenda
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developer.brella.io/list-all-timeslots
-  baseURL: https://api.brella.io/api/integration
-  properties:
-  - url: https://developer.brella.io/
-    type: Documentation
-  - url: https://developer.brella.io/list-all-timeslots
-    type: APIReference
-  - url: openapi/brella-openapi.yml
-    type: OpenAPI
-  - url: collections/brella.postman_collection.json
-    type: PostmanCollection
-  - url: collections/brella.opencollection.json
-    type: OpenCollection
-  description: List all timeslots (both networking and content types) for a specific
-    event - titles, subtitles, tracks, locations, tags, and formatted content -
-    for embedding or syncing an event agenda.
-- aid: brella:brella-invites-api
-  name: Brella Invites API
-  tags:
-  - Invites
-  - Registration
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developer.brella.io/list-all-invites
-  baseURL: https://api.brella.io/api/integration
-  properties:
-  - url: https://developer.brella.io/
-    type: Documentation
-  - url: https://developer.brella.io/list-all-invites
-    type: APIReference
-  - url: openapi/brella-openapi.yml
-    type: OpenAPI
-  - url: collections/brella.postman_collection.json
-    type: PostmanCollection
-  - url: collections/brella.opencollection.json
-    type: OpenCollection
-  description: List the invites issued for a specific event, scoped under
-    /organizations/{organizationId}/events/{eventId}/invites.
 - aid: brella:brella-webhooks
   name: Brella Webhooks
   tags:
@@ -170,10 +52,178 @@ apis:
     type: Documentation
   - url: https://developer.brella.io/webhook-triggers
     type: APIReference
-  description: Outbound HTTP webhooks that notify a subscriber URL when invites,
-    attendees, speakers, sponsors, ticket purchases, or ticket types are created,
-    updated, or deleted. Server-to-endpoint HTTP POST callbacks - not a WebSocket
-    or realtime push transport.
+  description: >-
+    Outbound HTTP webhooks that notify a subscriber URL when invites, attendees, speakers, sponsors, ticket
+    purchases, or ticket types are created, updated, or deleted. Server-to-endpoint HTTP POST callbacks
+    - not a WebSocket or realtime push transport.
+- aid: brella:brella-attendees-api
+  name: Brella Attendees API
+  description: The Attendees API from Brella — 1 operation(s) for attendees.
+  humanURL: https://developer.brella.io/list-all-events
+  baseURL: https://api.brella.io/api/integration
+  tags:
+  - Attendees
+  properties:
+  - type: OpenAPI
+    url: openapi/brella-attendees-api-openapi.yml
+  - type: Documentation
+    url: https://developer.brella.io/
+  - type: APIReference
+    url: https://developer.brella.io/list-all-events
+  - type: PostmanCollection
+    url: collections/brella.postman_collection.json
+  - type: OpenCollection
+    url: collections/brella.opencollection.json
+  - type: APIReference
+    url: https://developer.brella.io/list-all-attendees
+  - type: APIReference
+    url: https://developer.brella.io/list-all-speakers
+  - type: APIReference
+    url: https://developer.brella.io/list-all-sponsors
+  - type: APIReference
+    url: https://developer.brella.io/list-all-timeslots
+  - type: APIReference
+    url: https://developer.brella.io/list-all-invites
+- aid: brella:brella-events-api
+  name: Brella Events API
+  description: The Events API from Brella — 1 operation(s) for events.
+  humanURL: https://developer.brella.io/list-all-events
+  baseURL: https://api.brella.io/api/integration
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/brella-events-api-openapi.yml
+  - type: Documentation
+    url: https://developer.brella.io/
+  - type: APIReference
+    url: https://developer.brella.io/list-all-events
+  - type: PostmanCollection
+    url: collections/brella.postman_collection.json
+  - type: OpenCollection
+    url: collections/brella.opencollection.json
+  - type: APIReference
+    url: https://developer.brella.io/list-all-attendees
+  - type: APIReference
+    url: https://developer.brella.io/list-all-speakers
+  - type: APIReference
+    url: https://developer.brella.io/list-all-sponsors
+  - type: APIReference
+    url: https://developer.brella.io/list-all-timeslots
+  - type: APIReference
+    url: https://developer.brella.io/list-all-invites
+- aid: brella:brella-invites-api
+  name: Brella Invites API
+  description: The Invites API from Brella — 1 operation(s) for invites.
+  humanURL: https://developer.brella.io/list-all-events
+  baseURL: https://api.brella.io/api/integration
+  tags:
+  - Invites
+  properties:
+  - type: OpenAPI
+    url: openapi/brella-invites-api-openapi.yml
+  - type: Documentation
+    url: https://developer.brella.io/
+  - type: APIReference
+    url: https://developer.brella.io/list-all-events
+  - type: PostmanCollection
+    url: collections/brella.postman_collection.json
+  - type: OpenCollection
+    url: collections/brella.opencollection.json
+  - type: APIReference
+    url: https://developer.brella.io/list-all-attendees
+  - type: APIReference
+    url: https://developer.brella.io/list-all-speakers
+  - type: APIReference
+    url: https://developer.brella.io/list-all-sponsors
+  - type: APIReference
+    url: https://developer.brella.io/list-all-timeslots
+  - type: APIReference
+    url: https://developer.brella.io/list-all-invites
+- aid: brella:brella-schedule-api
+  name: Brella Schedule API
+  description: The Schedule API from Brella — 1 operation(s) for schedule.
+  humanURL: https://developer.brella.io/list-all-events
+  baseURL: https://api.brella.io/api/integration
+  tags:
+  - Schedule
+  properties:
+  - type: OpenAPI
+    url: openapi/brella-schedule-api-openapi.yml
+  - type: Documentation
+    url: https://developer.brella.io/
+  - type: APIReference
+    url: https://developer.brella.io/list-all-events
+  - type: PostmanCollection
+    url: collections/brella.postman_collection.json
+  - type: OpenCollection
+    url: collections/brella.opencollection.json
+  - type: APIReference
+    url: https://developer.brella.io/list-all-attendees
+  - type: APIReference
+    url: https://developer.brella.io/list-all-speakers
+  - type: APIReference
+    url: https://developer.brella.io/list-all-sponsors
+  - type: APIReference
+    url: https://developer.brella.io/list-all-timeslots
+  - type: APIReference
+    url: https://developer.brella.io/list-all-invites
+- aid: brella:brella-speakers-api
+  name: Brella Speakers API
+  description: The Speakers API from Brella — 1 operation(s) for speakers.
+  humanURL: https://developer.brella.io/list-all-events
+  baseURL: https://api.brella.io/api/integration
+  tags:
+  - Speakers
+  properties:
+  - type: OpenAPI
+    url: openapi/brella-speakers-api-openapi.yml
+  - type: Documentation
+    url: https://developer.brella.io/
+  - type: APIReference
+    url: https://developer.brella.io/list-all-events
+  - type: PostmanCollection
+    url: collections/brella.postman_collection.json
+  - type: OpenCollection
+    url: collections/brella.opencollection.json
+  - type: APIReference
+    url: https://developer.brella.io/list-all-attendees
+  - type: APIReference
+    url: https://developer.brella.io/list-all-speakers
+  - type: APIReference
+    url: https://developer.brella.io/list-all-sponsors
+  - type: APIReference
+    url: https://developer.brella.io/list-all-timeslots
+  - type: APIReference
+    url: https://developer.brella.io/list-all-invites
+- aid: brella:brella-sponsors-api
+  name: Brella Sponsors API
+  description: The Sponsors API from Brella — 1 operation(s) for sponsors.
+  humanURL: https://developer.brella.io/list-all-events
+  baseURL: https://api.brella.io/api/integration
+  tags:
+  - Sponsors
+  properties:
+  - type: OpenAPI
+    url: openapi/brella-sponsors-api-openapi.yml
+  - type: Documentation
+    url: https://developer.brella.io/
+  - type: APIReference
+    url: https://developer.brella.io/list-all-events
+  - type: PostmanCollection
+    url: collections/brella.postman_collection.json
+  - type: OpenCollection
+    url: collections/brella.opencollection.json
+  - type: APIReference
+    url: https://developer.brella.io/list-all-attendees
+  - type: APIReference
+    url: https://developer.brella.io/list-all-speakers
+  - type: APIReference
+    url: https://developer.brella.io/list-all-sponsors
+  - type: APIReference
+    url: https://developer.brella.io/list-all-timeslots
+  - type: APIReference
+    url: https://developer.brella.io/list-all-invites
 common:
 - type: AgenticAccess
   url: agentic-access/brella-agentic-access.yml
