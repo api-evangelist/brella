@@ -1,0 +1,24 @@
+{
+  "provider": "brella",
+  "sources": [
+    "brella-attendees-api-openapi.yml",
+    "brella-events-api-openapi.yml",
+    "brella-invites-api-openapi.yml",
+    "brella-schedule-api-openapi.yml",
+    "brella-speakers-api-openapi.yml",
+    "brella-sponsors-api-openapi.yml"
+  ],
+  "outputs": [
+    "brella-attendees-api-openapi.yml",
+    "brella-events-api-openapi.yml",
+    "brella-invites-api-openapi.yml",
+    "brella-schedule-api-openapi.yml",
+    "brella-speakers-api-openapi.yml",
+    "brella-sponsors-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
