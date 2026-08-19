@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Brella Integration Attendees Schedule API",
+    "version": "v4"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Brella-Api-Access-Token",
+      "value": "{{Brella-Api-Access-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Schedule",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all timeslots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brella.io/api/integration/organizations/:organizationId/events/:eventId/timeslots",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the Brella organization."
+              },
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the Brella event."
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page. Maximum 500. Pagination is mandatory."
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "The page number to retrieve. Pagination is mandatory."
+              }
+            ]
+          },
+          "docs": "List all timeslots (both networking and content types) for a specific event, including titles, subtitles, tracks, locations, tags, and formatted content."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

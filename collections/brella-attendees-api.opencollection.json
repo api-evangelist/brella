@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Brella Integration Attendees API",
+    "version": "v4"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Brella-Api-Access-Token",
+      "value": "{{Brella-Api-Access-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Attendees",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all attendees",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brella.io/api/integration/organizations/:organizationId/events/:eventId/attendees",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the Brella organization."
+              },
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the Brella event."
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page. Maximum 500. Pagination is mandatory."
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "The page number to retrieve. Pagination is mandatory."
+              },
+              {
+                "name": "created_from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created_to",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "updated_from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "updated_to",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List attendees for a specific event. Supports mandatory pagination and optional created_from, created_to, updated_from, and updated_to filters for incremental syncs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

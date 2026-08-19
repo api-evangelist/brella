@@ -1,0 +1,245 @@
+{
+  "item": [
+    {
+      "id": "481d5ab4-a54f-427b-acbb-5a9cf1a0e34f",
+      "name": "Events",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d873d5e4-2a3e-493b-9fc9-93dc811e18fb",
+          "name": "List all events",
+          "request": {
+            "name": "List all events",
+            "description": {
+              "content": "List the events belonging to a Brella organization. Supports mandatory pagination and optional ISO 8601 date-range filtering.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "50",
+                  "description": "(Required) Number of records per page. Maximum 500. Pagination is mandatory."
+                },
+                {
+                  "disabled": false,
+                  "key": "page[number]",
+                  "value": "1",
+                  "description": "(Required) The page number to retrieve. Pagination is mandatory."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_from",
+                  "value": "<dateTime>",
+                  "description": "Return events created on or after this ISO 8601 timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_to",
+                  "value": "<dateTime>",
+                  "description": "Return events created on or before this ISO 8601 timestamp."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "organizationId",
+                  "description": "(Required) The numeric ID of the Brella organization."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b9f82d63-0d80-430d-8913-4599c9231a9b",
+              "name": "A paginated list of events.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "50"
+                    },
+                    {
+                      "key": "page[number]",
+                      "value": "1"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "2023-11-20T00:00:00.000Z"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "organizationId",
+                      "description": "(Required) The numeric ID of the Brella organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Brella-Api-Access-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "58dfa649-6c74-4b8f-ac2e-1feff62e4320",
+              "name": "Missing or invalid Brella-Api-Access-Token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "50"
+                    },
+                    {
+                      "key": "page[number]",
+                      "value": "1"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "2023-11-20T00:00:00.000Z"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "organizationId",
+                      "description": "(Required) The numeric ID of the Brella organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Brella-Api-Access-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.brella.io/api/integration",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Brella-Api-Access-Token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7c3cd3e5-f9c9-46b4-bb0a-76c8602e477b",
+    "name": "Brella Integration Attendees Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public REST Integration API for the Brella event networking and engagement platform. Organizers use it to read event data - events, attendees, speakers, sponsors, timeslots (schedule), and invites - for a Brella organization and sync it to registration, CRM, and analytics tools. Access is gated: an organization admin generates an API key from the Brella admin panel and sends it in the Brella-Api-Access-Token header. Versioning is negotiated via the Accept header (application/vnd.brella.v4+json). Pagination is mandatory on all list endpoints (page[size] up to 500, page[number]). Only endpoints confirmed against the public developer portal (developer.brella.io) are modeled here; additional documented surfaces (RSVP & session check-in, statistics & analytics) exist but their exact paths were not confirmed at authoring time.\n\nContact Support:\n Name: Brella Developer Documentation",
+      "type": "text/plain"
+    }
+  }
+}

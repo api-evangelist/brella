@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Brella Integration Attendees Events API",
+    "version": "v4"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Brella-Api-Access-Token",
+      "value": "{{Brella-Api-Access-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.brella.io/api/integration/organizations/:organizationId/events",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the Brella organization."
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page. Maximum 500. Pagination is mandatory."
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "The page number to retrieve. Pagination is mandatory."
+              },
+              {
+                "name": "created_from",
+                "value": "",
+                "type": "query",
+                "description": "Return events created on or after this ISO 8601 timestamp."
+              },
+              {
+                "name": "created_to",
+                "value": "",
+                "type": "query",
+                "description": "Return events created on or before this ISO 8601 timestamp."
+              }
+            ]
+          },
+          "docs": "List the events belonging to a Brella organization. Supports mandatory pagination and optional ISO 8601 date-range filtering."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

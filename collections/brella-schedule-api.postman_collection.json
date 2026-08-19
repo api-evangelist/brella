@@ -1,0 +1,244 @@
+{
+  "item": [
+    {
+      "id": "837a15ed-2b75-47e0-a524-d0933d9d8002",
+      "name": "Schedule",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a57a5be1-5a34-48e5-8130-896407754b90",
+          "name": "List all timeslots",
+          "request": {
+            "name": "List all timeslots",
+            "description": {
+              "content": "List all timeslots (both networking and content types) for a specific event, including titles, subtitles, tracks, locations, tags, and formatted content.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "events",
+                ":eventId",
+                "timeslots"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "50",
+                  "description": "(Required) Number of records per page. Maximum 500. Pagination is mandatory."
+                },
+                {
+                  "disabled": false,
+                  "key": "page[number]",
+                  "value": "1",
+                  "description": "(Required) The page number to retrieve. Pagination is mandatory."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "organizationId",
+                  "description": "(Required) The numeric ID of the Brella organization."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "eventId",
+                  "description": "(Required) The numeric ID of the Brella event."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45cc1db1-e24b-4956-bdb8-60062a058cc3",
+              "name": "A paginated list of timeslots.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "events",
+                    ":eventId",
+                    "timeslots"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "50"
+                    },
+                    {
+                      "key": "page[number]",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "organizationId",
+                      "description": "(Required) The numeric ID of the Brella organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "eventId",
+                      "description": "(Required) The numeric ID of the Brella event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Brella-Api-Access-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b0c883fe-f195-4b15-a75a-455f9553e308",
+              "name": "Missing or invalid Brella-Api-Access-Token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "events",
+                    ":eventId",
+                    "timeslots"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "50"
+                    },
+                    {
+                      "key": "page[number]",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "organizationId",
+                      "description": "(Required) The numeric ID of the Brella organization."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "eventId",
+                      "description": "(Required) The numeric ID of the Brella event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Brella-Api-Access-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.brella.io/api/integration",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Brella-Api-Access-Token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6a0d996a-3fb1-4f74-8cfa-5438adf8c51b",
+    "name": "Brella Integration Attendees Schedule API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public REST Integration API for the Brella event networking and engagement platform. Organizers use it to read event data - events, attendees, speakers, sponsors, timeslots (schedule), and invites - for a Brella organization and sync it to registration, CRM, and analytics tools. Access is gated: an organization admin generates an API key from the Brella admin panel and sends it in the Brella-Api-Access-Token header. Versioning is negotiated via the Accept header (application/vnd.brella.v4+json). Pagination is mandatory on all list endpoints (page[size] up to 500, page[number]). Only endpoints confirmed against the public developer portal (developer.brella.io) are modeled here; additional documented surfaces (RSVP & session check-in, statistics & analytics) exist but their exact paths were not confirmed at authoring time.\n\nContact Support:\n Name: Brella Developer Documentation",
+      "type": "text/plain"
+    }
+  }
+}
