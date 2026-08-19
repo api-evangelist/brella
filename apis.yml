@@ -36,7 +36,7 @@ tags:
 - SaaS
 created: '2026-07-12'
 modified: '2026-07-12'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: brella:brella-webhooks
   name: Brella Webhooks
