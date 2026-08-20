@@ -26,6 +26,15 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/brella.png
 tags:
+- Event
+- Event Networking
+- Matchmaking
+- Event Platform
+- Attendees
+- Engagement
+- Conferences
+- Software-as-a-Service
+tags_raw:
 - Events
 - Event Networking
 - Matchmaking
@@ -41,6 +50,10 @@ apis:
 - aid: brella:brella-webhooks
   name: Brella Webhooks
   tags:
+  - Webhook
+  - Event
+  - Notification
+  tags_raw:
   - Webhooks
   - Events
   - Notifications
@@ -90,6 +103,8 @@ apis:
   humanURL: https://developer.brella.io/list-all-events
   baseURL: https://api.brella.io/api/integration
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
