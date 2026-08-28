@@ -11,6 +11,18 @@ description: Brella is an event networking and engagement platform for conferenc
   timeslots, invites) and sync it to registration, CRM, and analytics tools. API
   access is gated - an organization admin generates an API key from the Brella admin
   panel after the integration feature is enabled for the account.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: self-serve
