@@ -1,0 +1,25 @@
+# Front Door AI Index — brella — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: brella
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.brella.io
+  final_host: www.brella.io
+  ownership: own
+  owner: brella
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 7
+  host_score: 7
+  density: 6.32
+  words: 1108
+  tiers:
+    agentic: 0
+    core: 7
+    model: 0
+  ambiguous: 0
+  top_terms:
+    AI: 7

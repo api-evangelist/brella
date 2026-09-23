@@ -1,12 +1,7 @@
 {
   "provider": "brella",
   "sources": [
-    "brella-attendees-api-openapi.yml",
-    "brella-events-api-openapi.yml",
-    "brella-invites-api-openapi.yml",
-    "brella-schedule-api-openapi.yml",
-    "brella-speakers-api-openapi.yml",
-    "brella-sponsors-api-openapi.yml"
+    "_original/brella-openapi.yml"
   ],
   "outputs": [
     "brella-attendees-api-openapi.yml",
@@ -19,6 +14,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "brella-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "brella-attendees-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "brella-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "brella-invites-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "brella-schedule-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "brella-speakers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "brella-sponsors-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
