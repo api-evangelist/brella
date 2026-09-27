@@ -47,6 +47,9 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid Brella-Api-Access-Token.
   parameters:
     PageSize:
       name: page[size]
@@ -72,9 +75,6 @@ components:
       schema:
         type: integer
         default: 1
-  responses:
-    Unauthorized:
-      description: Missing or invalid Brella-Api-Access-Token.
   securitySchemes:
     BrellaApiAccessToken:
       type: apiKey

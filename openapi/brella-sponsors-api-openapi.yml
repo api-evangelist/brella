@@ -50,13 +50,6 @@ components:
       description: The numeric ID of the Brella organization.
       schema:
         type: integer
-    EventId:
-      name: eventId
-      in: path
-      required: true
-      description: The numeric ID of the Brella event.
-      schema:
-        type: integer
     PageNumber:
       name: page[number]
       in: query
@@ -65,6 +58,13 @@ components:
       schema:
         type: integer
         default: 1
+    EventId:
+      name: eventId
+      in: path
+      required: true
+      description: The numeric ID of the Brella event.
+      schema:
+        type: integer
   responses:
     Unauthorized:
       description: Missing or invalid Brella-Api-Access-Token.
