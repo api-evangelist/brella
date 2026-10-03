@@ -47,10 +47,15 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Missing or invalid Brella-Api-Access-Token.
   parameters:
+    PageNumber:
+      name: page[number]
+      in: query
+      required: true
+      description: The page number to retrieve. Pagination is mandatory.
+      schema:
+        type: integer
+        default: 1
     PageSize:
       name: page[size]
       in: query
@@ -67,14 +72,9 @@ components:
       description: The numeric ID of the Brella organization.
       schema:
         type: integer
-    PageNumber:
-      name: page[number]
-      in: query
-      required: true
-      description: The page number to retrieve. Pagination is mandatory.
-      schema:
-        type: integer
-        default: 1
+  responses:
+    Unauthorized:
+      description: Missing or invalid Brella-Api-Access-Token.
   securitySchemes:
     BrellaApiAccessToken:
       type: apiKey

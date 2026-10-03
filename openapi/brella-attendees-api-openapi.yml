@@ -58,20 +58,18 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   parameters:
-    PageSize:
-      name: page[size]
-      in: query
-      required: true
-      description: Number of records per page. Maximum 500. Pagination is mandatory.
-      schema:
-        type: integer
-        maximum: 500
-        default: 50
     OrganizationId:
       name: organizationId
       in: path
       required: true
       description: The numeric ID of the Brella organization.
+      schema:
+        type: integer
+    EventId:
+      name: eventId
+      in: path
+      required: true
+      description: The numeric ID of the Brella event.
       schema:
         type: integer
     PageNumber:
@@ -82,13 +80,15 @@ components:
       schema:
         type: integer
         default: 1
-    EventId:
-      name: eventId
-      in: path
+    PageSize:
+      name: page[size]
+      in: query
       required: true
-      description: The numeric ID of the Brella event.
+      description: Number of records per page. Maximum 500. Pagination is mandatory.
       schema:
         type: integer
+        maximum: 500
+        default: 50
   responses:
     Unauthorized:
       description: Missing or invalid Brella-Api-Access-Token.
