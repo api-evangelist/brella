@@ -1,4 +1,4 @@
-# Brella (brella)
+# Brella
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,131 +64,129 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Brella is an event networking and engagement platform for conferences, trade shows, livestreams, and hybrid events, best known for AI-powered attendee matchmaking and one-to-one meeting booking. Organizers run events, attendees, speakers, sponsors, schedules, and networking through Brella's web and mobile apps.
+Brella is an event networking and engagement platform for conferences, trade shows, livestreams, and hybrid events, best known for AI-powered attendee matchmaking and one-to-one meeting booking. Organizers manage events, attendees, speakers, sponsors, schedules, and networking through the Brella web and mobile apps. Brella exposes a documented public REST Integration API and outbound webhooks so organizers can read event data (events, attendees, speakers, sponsors, timeslots, invites) and sync it to registration, CRM, and analytics tools. API access is gated - an organization admin generates an API key from the Brella admin panel after the integration feature is enabled for the account.
 
-## Access model: public REST API, but gated
+**Areas:** Event · Event Networking · Matchmaking · Event Platform · Attendees · Engagement · Conferences · Software-as-a-Service
 
-**Yes — Brella exposes a documented public REST API.** It is the Brella Integration API, documented at [developer.brella.io](https://developer.brella.io/), with base URL `https://api.brella.io/api/integration`.
+## Brella on APIs.io
 
-Access is **gated**, not open self-service:
+Everything profiled for Brella is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/brella/](https://apis.io/providers/brella/)** — or go straight to one of the APIs or properties below.
 
-- The API key feature is activated on an organization's account only after the integration is enabled by Brella (a paid engagement).
-- An **organization admin** generates an organization-level API key from the Brella admin panel (Organization / API key). The key is shown only once at creation.
-- Authenticate by sending the key in the **`Brella-Api-Access-Token`** request header. Every request must also send `Content-Type: application/json` and `Accept: application/vnd.brella.v4+json` (the Accept header selects the API version, **v4**), over SSL/TLS.
+### APIs (7)
 
-The API is **read-oriented** — it lets you pull event data out of Brella (events, attendees, speakers, sponsors, timeslots, invites) to sync into registration, CRM, and analytics tools. Brella also documents **outbound webhooks** for change notifications. There is **no documented WebSocket or SSE (realtime streaming) API**.
+- [Brella Webhooks](https://apis.io/apis/brella/brella-webhooks/) — Outbound HTTP webhooks that notify a subscriber URL when invites, attendees, speakers, sponsors, ticket purchases, or ticket types are created, updated, or…
+- [Brella Attendees API](https://apis.io/apis/brella/brella-attendees-api/) — The Attendees API from Brella — 1 operation(s) for attendees.
+- [Brella Events API](https://apis.io/apis/brella/brella-events-api/) — The Events API from Brella — 1 operation(s) for events.
+- [Brella Invites API](https://apis.io/apis/brella/brella-invites-api/) — The Invites API from Brella — 1 operation(s) for invites.
+- [Brella Schedule API](https://apis.io/apis/brella/brella-schedule-api/) — The Schedule API from Brella — 1 operation(s) for schedule.
+- [Brella Speakers API](https://apis.io/apis/brella/brella-speakers-api/) — The Speakers API from Brella — 1 operation(s) for speakers.
+- [Brella Sponsors API](https://apis.io/apis/brella/brella-sponsors-api/) — The Sponsors API from Brella — 1 operation(s) for sponsors.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/brella/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/brella/refs/heads/main/apis.yml)
+### Published properties
 
-## Tags
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- Events
-- Event Networking
-- Matchmaking
-- Event Platform
-- Attendees
-- Engagement
-- Conferences
-- SaaS
+#### Agentic access (1)
 
-## Timestamps
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- **Created:** 2026-07-12
-- **Modified:** 2026-07-12
+- [Brella Agentic Access](https://apis.io/agentic-access/brella/brella-agentic-access/)
 
-## Base URL and authentication
+#### Collections (7)
 
-- **Base URL:** `https://api.brella.io/api/integration`
-- **Auth header:** `Brella-Api-Access-Token: <your-api-key>`
-- **Version header:** `Accept: application/vnd.brella.v4+json`
-- **Pagination:** mandatory on all list endpoints — `page[size]` (max 500) and `page[number]`
-- **Rate limits:** no hard cap published; Brella recommends no more than ~10 requests/second and reserves the right to block unreasonable volume
+Postman and Open Collection request collections.
 
-## APIs
+- [Brella Integration API](https://apis.io/collections/brella/open-brella/)
+- [Brella Integration Attendees API](https://apis.io/collections/brella/open-brella-attendees-api/)
+- [Brella Integration Attendees Events API](https://apis.io/collections/brella/open-brella-events-api/)
+- [Brella Integration Attendees Invites API](https://apis.io/collections/brella/open-brella-invites-api/)
+- [Brella Integration Attendees Schedule API](https://apis.io/collections/brella/open-brella-schedule-api/)
+- [Brella Integration Attendees Speakers API](https://apis.io/collections/brella/open-brella-speakers-api/)
+- [Brella Integration Attendees Sponsors API](https://apis.io/collections/brella/open-brella-sponsors-api/)
 
-### Brella Events API
+#### Security (2)
 
-List the events belonging to a Brella organization, with mandatory pagination and optional ISO 8601 date-range filters.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://developer.brella.io/list-all-events](https://developer.brella.io/list-all-events)
-- **Base URL:** `https://api.brella.io/api/integration`
-- `GET /organizations/{organizationId}/events`
+- [Brella Authentication](https://apis.io/security/brella/brella-authentication/)
+- [Brella Domain Security](https://apis.io/security/brella/brella-domain-security/)
 
-### Brella Attendees API
+#### Plans and pricing (1)
 
-List attendees for a specific event, with `created_from` / `created_to` / `updated_from` / `updated_to` filters for incremental syncs.
+Published plans, tiers and prices.
 
-- **Human URL:** [https://developer.brella.io/list-all-attendees](https://developer.brella.io/list-all-attendees)
-- `GET /organizations/{organizationId}/events/{eventId}/attendees`
+- [Brella Plans Pricing](https://apis.io/plans/brella/brella-plans-pricing/)
 
-### Brella Speakers API
+#### Rate limits (1)
 
-List the speakers configured for a specific event.
+Published request limits.
 
-- **Human URL:** [https://developer.brella.io/list-all-speakers](https://developer.brella.io/list-all-speakers)
-- `GET /organizations/{organizationId}/events/{eventId}/speakers`
+- [Brella Rate Limits](https://apis.io/rate-limits/brella/brella-rate-limits/)
 
-### Brella Sponsors API
+#### FinOps (1)
 
-List sponsors and exhibitors for a specific event.
+What the API costs to run, by operation.
 
-- **Human URL:** [https://developer.brella.io/list-all-sponsors](https://developer.brella.io/list-all-sponsors)
-- `GET /organizations/{organizationId}/events/{eventId}/sponsors`
+- [Brella Finops](https://apis.io/finops/brella/brella-finops/)
 
-### Brella Schedule API
+## Where to find this API
 
-List all timeslots (both networking and content types) for a specific event — titles, subtitles, tracks, locations, tags, and formatted content.
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- **Human URL:** [https://developer.brella.io/list-all-timeslots](https://developer.brella.io/list-all-timeslots)
-- `GET /organizations/{organizationId}/events/{eventId}/timeslots`
-
-### Brella Invites API
-
-List the invites issued for a specific event.
-
-- **Human URL:** [https://developer.brella.io/list-all-invites](https://developer.brella.io/list-all-invites)
-- `GET /organizations/{organizationId}/events/{eventId}/invites`
-
-### Brella Webhooks
-
-Outbound HTTP POST callbacks fired when invites, attendees, speakers, sponsors, ticket purchases, or ticket types are created, updated, or deleted. Server-to-endpoint HTTP — not a WebSocket or realtime push transport.
-
-- **Human URL:** [https://developer.brella.io/webhooks](https://developer.brella.io/webhooks)
-
-## Modeled but not path-confirmed
-
-The developer portal also documents an **RSVP & session check-in** surface and a **Statistics & analytics** surface (meetings, chats, tracking sessions). Their exact paths were not confirmed at authoring time and are intentionally **not** modeled in the OpenAPI. See `review.yml`.
-
-## Artifacts
-
-- [OpenAPI](openapi/brella-openapi.yml)
-- [Postman Collection](collections/brella.postman_collection.json)
-- [Open Collection](collections/brella.opencollection.json)
-- [Authentication](authentication/brella-authentication.yml)
-- [Plans / Pricing](plans/brella-plans-pricing.yml)
-- [Rate Limits](rate-limits/brella-rate-limits.yml)
-- [FinOps](finops/brella-finops.yml)
-- [Domain Security](security/brella-domain-security.yml)
-- [Review](review.yml)
-
-## Common Properties
-
-- [Domain Security](security/brella-domain-security.yml)
-- [Authentication](authentication/brella-authentication.yml)
-- [GitHub Organization](https://github.com/brella)
-- [LinkedIn](https://www.linkedin.com/company/brella)
 - [Website](https://www.brella.io)
 - [Documentation](https://developer.brella.io/)
-- [Plans](plans/brella-plans-pricing.yml)
-- [Rate Limits](rate-limits/brella-rate-limits.yml)
-- [Fin Ops](finops/brella-finops.yml)
 - [Blog](https://www.brella.io/blog)
+- [GitHub](https://github.com/brella)
 
-## Pricing
+## API Evangelist rating
 
-Brella is a **contact-sales SaaS** platform priced per event / license; it does not publish public self-service pricing tiers, and the Integration API is not separately metered. See `plans/brella-plans-pricing.yml` (reconciled: false).
+**Kin Score 27.2** — thin · rubric 0.24.0 · scored 2026-10-17
 
-## Maintainers
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 50.2 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 5.3 |
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Agent readiness 20.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/brella/](https://apis.io/providers/brella/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Brella: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/brella/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
